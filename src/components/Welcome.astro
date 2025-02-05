@@ -1,0 +1,76 @@
+---
+import background from '../assets/background.jpg';
+---
+
+<div id="container" style={`background-image: url(${background.src});`}>
+	<main>
+        <section>
+            <h1>mtthw.ky</h1>
+            <p>Hi, I'm Matthew. I'm a software engineer and I like to build things.</p>
+        </section>
+        <section>
+            <ul class="icons">
+                <li><a href="https://www.linkedin.com/in/mkayyy"><i class='fab fa-linkedin'></i></a></li>
+                <li><a href="https://github.com/matthewkayy"><i class='fab fa-github'></i></a></li>
+                <li><a href="mailto:matthewkayy@gmail.com"><i class="fa-solid fa-envelope"></i></a></li>
+            </ul>
+        </section>
+	</main>
+</div>
+
+<style>
+	#container {
+		width: 100vw;
+		height: 100vh;
+	}
+
+	main {
+		display: flex;
+		flex-direction: column;
+		justify-content: center;
+		align-items: center;
+		height: 100vh;
+	}
+
+	section {
+		display: flex;
+		flex-direction: column;
+		padding: 1rem;
+	}
+	
+	section h1 {
+		font-size: 2.5em;
+		font-weight: 700;
+		color: gray;
+	}
+
+	section p {
+		font-size: 1em;
+		font-weight: 400;
+		font-style: normal;
+	}
+
+	section ul.icons {
+		display: flex;
+		flex-direction: row;
+	}
+
+	section ul.icons li {
+		list-style: none;
+		margin: 0 0.3rem;
+		font-size: 1.6rem;
+	}
+
+	section ul.icons li a {
+		color: gray;
+		text-decoration: none;
+	}
+
+	section ul.icons li a:visited {
+		color: gray;
+	}
+
+	section ul.icons li a:hover {
+		color: black;
+	}
+</style>

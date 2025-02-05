@@ -1,0 +1,35 @@
+---
+import "../styles/reset.css";
+import background from '../assets/background.jpg';
+---
+
+<!doctype html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width" />
+		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+		<meta name="generator" content={Astro.generator} />
+    	<title>mtthw.ky</title>
+		<link rel="preconnect" href="https://fonts.googleapis.com">
+		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+		<link href="https://fonts.googleapis.com/css2?family=Space+Mono:ital,wght@0,400;0,700;1,400;1,700&display=swap" rel="stylesheet">
+		<script src="https://kit.fontawesome.com/6149cb6cee.js" crossorigin="anonymous" defer></script>
+	</head>
+	<body style={`background-image: url(${background.src});`}>
+		<slot />
+	</body>
+</html>
+
+<style>
+body {
+	background-size: cover;
+	background-position: center;
+	font-family: "Space Mono", monospace;
+	background-size: cover;
+	background-position: center;
+	font-family: "Space Mono", monospace;
+	width: 100vw;
+	height: 100vh;
+}	
+</style>
