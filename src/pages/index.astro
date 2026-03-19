@@ -1,8 +1,47 @@
 ---
-import Welcome from '../components/Welcome.astro';
+import About from '../components/About.astro';
+import Socials from '../components/Socials.astro';
+import ListeningTo from '../components/ListeningTo.astro';
+import LetterboxdFeed from '../components/LetterboxdFeed.astro';
 import Layout from '../layouts/Layout.astro';
 ---
 
 <Layout>
-	<Welcome />
+	<div id="page">
+		<header>
+			<About />
+			<Socials />
+		</header>
+		<main>
+			<ListeningTo />
+			<LetterboxdFeed />
+		</main>
+	</div>
 </Layout>
+
+<style>
+	#page {
+		max-width: 960px;
+		margin: 0 auto;
+		padding: 3rem clamp(1rem, 5vw, 2rem) 4rem;
+	}
+
+	header {
+		margin-bottom: 2.5rem;
+		padding-bottom: 2rem;
+		border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+	}
+
+	main {
+		display: grid;
+		grid-template-columns: 1fr 1fr;
+		gap: clamp(1rem, 3vw, 2rem);
+		align-items: stretch;
+	}
+
+	@media (max-width: 600px) {
+		main {
+			grid-template-columns: 1fr;
+		}
+	}
+</style>

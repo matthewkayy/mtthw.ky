@@ -4,6 +4,8 @@ on:
   push:
     branches:
     - main
+  schedule:
+    - cron: '0 0 * * *'
 
 jobs:
   deploy:
@@ -14,9 +16,13 @@ jobs:
         uses: actions/checkout@v3
 
       - name: Setup
-        run: | 
+        run: |
           npm install
           npm run build
+        env:
+          LASTFM_USERNAME: ${{ secrets.LASTFM_USERNAME }}
+          LASTFM_API_KEY: ${{ secrets.LASTFM_API_KEY }}
+          LETTERBOXD_USERNAME: ${{ secrets.LETTERBOXD_USERNAME }}
 
       - name: Configure AWS Credentials
         uses: jakejarvis/s3-sync-action@master

@@ -1,6 +1,5 @@
 ---
 import "../styles/reset.css";
-import background from '../assets/background.jpg';
 ---
 
 <!doctype html>
@@ -16,20 +15,27 @@ import background from '../assets/background.jpg';
 		<link href="https://fonts.googleapis.com/css2?family=Space+Mono:ital,wght@0,400;0,700;1,400;1,700&display=swap" rel="stylesheet">
 		<script src="https://kit.fontawesome.com/6149cb6cee.js" crossorigin="anonymous" defer></script>
 	</head>
-	<body style={`background-image: url(${background.src});`}>
+	<body>
 		<slot />
 	</body>
 </html>
 
-<style>
-body {
-	background-size: cover;
-	background-position: center;
-	font-family: "Space Mono", monospace;
-	background-size: cover;
-	background-position: center;
-	font-family: "Space Mono", monospace;
-	width: 100vw;
-	height: 100vh;
-}	
+<style is:global>
+	*, *::before, *::after {
+		box-sizing: border-box;
+	}
+
+	body {
+		font-family: "Space Mono", monospace;
+		background-color: #0d0d0d;
+		color: #d4d4d4;
+		min-height: 100vh;
+		width: 100%;
+		overflow-x: hidden;
+	}
+
+	a {
+		color: inherit;
+		text-decoration: none;
+	}
 </style>

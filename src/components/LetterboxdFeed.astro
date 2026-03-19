@@ -1,0 +1,59 @@
+---
+import "./LetterboxdFeed.css";
+import Parser from "rss-parser";
+
+interface LetterboxdItem {
+  title: string;
+  link: string;
+  isoDate: string;
+  content: string;
+}
+
+let items: LetterboxdItem[] = [];
+let errorMsg: string | null = null;
+
+try {
+  const username = import.meta.env.LETTERBOXD_USERNAME;
+  const parser = new Parser();
+  const feed = await parser.parseURL(`https://letterboxd.com/${username}/rss/`);
+  items = (feed.items as LetterboxdItem[]).slice(0, 5);
+} catch (e: any) {
+  errorMsg = e.message;
+}
+
+const getPosterSrc = (content: string): string | null => {
+  const match = content?.match(/<img[^>]+src="([^"]+)"/);
+  return match ? match[1] : null;
+};
+---
+
+<section class="letterboxd-section">
+  <h2>Recently watched</h2>
+  {errorMsg ? (
+    <p style="color: #555; font-size: 0.8rem;">{errorMsg}</p>
+  ) : (
+    <div class="letterboxd-feed">
+      {items.map((item) => {
+        const poster = getPosterSrc(item.content);
+        const date = new Date(item.isoDate).toLocaleDateString("en-US", {
+          month: "short", day: "numeric", year: "numeric"
+        });
+        return (
+          <div class="letterboxd-item">
+            {poster && (
+              <div class="letterboxd-item-poster">
+                <img src={poster} alt={item.title} />
+              </div>
+            )}
+            <div class="letterboxd-item-info">
+              <a href={item.link} target="_blank" rel="noopener noreferrer">
+                {item.title}
+              </a>
+              <p class="watch-date">{date}</p>
+            </div>
+          </div>
+        );
+      })}
+    </div>
+  )}
+</section>

@@ -1,0 +1,50 @@
+---
+import "./ListeningTo.css";
+
+interface AlbumImage {
+  "#text": string;
+  size: string;
+}
+
+interface Album {
+  name: string;
+  artist: { name: string };
+  image: AlbumImage[];
+}
+
+let albums: Album[] = [];
+let errorMsg: string | null = null;
+
+try {
+  const username = import.meta.env.LASTFM_USERNAME;
+  const apiKey = import.meta.env.LASTFM_API_KEY;
+  const res = await fetch(
+    `https://ws.audioscrobbler.com/2.0/?method=user.gettopalbums&user=${username}&api_key=${apiKey}&format=json&period=7day&limit=4`
+  );
+  if (!res.ok) throw new Error(`Last.fm responded with ${res.status}`);
+  const data = await res.json();
+  albums = data.topalbums.album;
+} catch (e: any) {
+  errorMsg = e.message;
+}
+---
+
+<section class="listening-section">
+  <h2>Listening to</h2>
+  {errorMsg ? (
+    <p style="color: #555; font-size: 0.8rem;">{errorMsg}</p>
+  ) : (
+    <div class="albums">
+      {albums.map((album) => {
+        const img = album.image[2]?.["#text"];
+        return (
+          <div class="album">
+            {img && <img src={img} alt={album.name} />}
+            <p class="album-name">{album.name}</p>
+            <p class="artist-name">{album.artist.name}</p>
+          </div>
+        );
+      })}
+    </div>
+  )}
+</section>
