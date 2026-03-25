@@ -6,7 +6,7 @@ import "../styles/reset.css";
 <html lang="en">
 	<head>
 		<meta charset="UTF-8" />
-		<meta name="viewport" content="width=device-width" />
+		<meta name="viewport" content="width=device-width, initial-scale=1" />
 		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
 		<meta name="generator" content={Astro.generator} />
     	<title>mtthw.ky</title>
@@ -25,13 +25,16 @@ import "../styles/reset.css";
 		box-sizing: border-box;
 	}
 
+	html {
+		font-size: clamp(12px, 2.9vw, 16px);
+	}
+
 	body {
 		font-family: "Space Mono", monospace;
 		background-color: #0d0d0d;
 		color: #d4d4d4;
 		min-height: 100vh;
-		width: 100%;
-		overflow-x: hidden;
+		scrollbar-gutter: stable;
 	}
 
 	a {

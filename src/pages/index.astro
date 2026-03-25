@@ -22,8 +22,16 @@ import Layout from '../layouts/Layout.astro';
 <style>
 	#page {
 		max-width: 960px;
+		width: 100%;
 		margin: 0 auto;
-		padding: 3rem clamp(1rem, 5vw, 2rem) 4rem;
+		padding: 3rem 2rem 4rem;
+		box-sizing: border-box;
+	}
+
+	@media (max-width: 600px) {
+		#page {
+			padding: 2rem 1rem 3rem;
+		}
 	}
 
 	header {
