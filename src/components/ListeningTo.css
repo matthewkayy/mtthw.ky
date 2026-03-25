@@ -23,15 +23,15 @@
 .albums {
     flex: 1;
     display: grid;
-    grid-template-columns: repeat(4, 1fr);
-    align-content: space-between;
+    grid-template-columns: repeat(2, 1fr);
+    align-content: center;
     gap: 0.75rem;
     min-height: 0;
 }
 
-@container (min-width: 320px) {
+@media (max-width: 1000px) {
     .albums {
-        grid-template-columns: repeat(2, 1fr);
+        grid-template-columns: repeat(4, 1fr);
     }
 }
 
