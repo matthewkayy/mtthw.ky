@@ -8,6 +8,7 @@ interface AlbumImage {
 
 interface Album {
   name: string;
+  url: string;
   artist: { name: string };
   image: AlbumImage[];
 }
@@ -38,11 +39,11 @@ try {
       {albums.map((album) => {
         const img = album.image[2]?.["#text"];
         return (
-          <div class="album">
+          <a class="album" href={album.url} target="_blank" rel="noopener noreferrer">
             {img && <img src={img} alt={album.name} />}
             <p class="album-name">{album.name}</p>
             <p class="artist-name">{album.artist.name}</p>
-          </div>
+          </a>
         );
       })}
     </div>
